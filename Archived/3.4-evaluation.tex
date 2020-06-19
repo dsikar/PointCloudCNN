@@ -1,0 +1,54 @@
+
+
+
+\subsubsection{Mean Squared Error (MSE)}
+
+% “Image2Mesh: A Learning Framework for Single Image 3D Reconstruction
+% https://arxiv.org/abs/1711.10669
+@misc{pontes2017image2mesh,
+    title={Image2Mesh: A Learning Framework for Single Image 3D Reconstruction},
+    author={Jhony K. Pontes and Chen Kong and Sridha Sridharan and Simon Lucey and Anders Eriksson and Clinton Fookes},
+    year={2017},
+    eprint={1711.10669},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+
+This is defined as the surface distance between $X$ and $\hat{X}$:
+\begin{align}
+d(\hat{X},X) = \frac{1}{n_X} \sum_{p\in X}d(p,\hat{X})+\frac{1}{n_{\hat{X}}} \sum_{p\in \hat{X}}d(\hat{p},X).   
+\end{align}
+where ${n_X},n_{\hat{X}}$ as the number of sampled points, $p, \hat{p}$ are the point coordinates and $d(p,\hat{X}), d(\hat{p},X)$ are the distances along the normal direction to X, \textit{e.g} the $L_1, L_2$ norms:  
+\begin{align}
+x & = d(\hat{p},X) \\  
+|x|_1 & = \Bigg[\sum_{k=1}^k|x_i|\Bigg|^1 \\  
+|x|_2 & = \Bigg[\sum_{k=1}^k|x_k|^2\Bigg]^{\frac{1}{2}}  %
+\end{align}
+
+\subsubsection{Intersection over Union (IoU)}
+
+%Stopped here, need to add this plus Mean of Cross Entropy loss 
+%from
+%https://arxiv.org/pdf/1906.06543.pdf
+
+% Plus ideas, implementing on processor side (embedded CNN - tensorflow lite for Arduino) or on desktop side.
+\begin{align}
+IoU_{\epsilon} = \frac{\hat{V} \cap V} {\hat{V} \cup V} = \frac{\sum_i\{I(\hat{V_i}> \epsilon) * I(V_i)\}}{\sum_i\{I(I(\hat{V_i}> \epsilon) + I(V_i))\}}    
+\end{align}
+
+\subsubsection{Mean of Cross Entropy (CE) loss}
+
+% source 3D Object Reconstruction from a Single Depth View with Adversarial Learning
+% https://arxiv.org/abs/1708.07969
+@misc{yang20173d,
+    title={3D Object Reconstruction from a Single Depth View with Adversarial Learning},
+    author={Bo Yang and Hongkai Wen and Sen Wang and Ronald Clark and Andrew Markham and Niki Trigoni},
+    year={2017},
+    eprint={1708.07969},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+
+\begin{align}
+CE = -\frac{1}{N}\sum_{i=1}^N\{p_ilog\hat{p}_i+(1-p_i)log(1 - \hat{p}_i)\} 
+\end{align}

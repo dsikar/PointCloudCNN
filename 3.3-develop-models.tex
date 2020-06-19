@@ -1,0 +1,24 @@
+\subsection{Develop Models}
+
+Once dataset and tools have been selected, we plan to
+
+\begin{enumerate}
+  \item Build on prior work similar to \cite{LiuMonocular2016}, where, in addition to images, camera intrisic matrix parameters are used as input features. The expectation being to increase the accuracy of predicted geometries
+  \item Narrow the object segmentation scope to a known set of geometries, on a per-scene basis. The expectation is this will make models simpler to train and deploy
+  \item For a given scene, generate a prediction using the model, and perform segmentation on the LIDAR point cloud to obtain ground truths 
+  \item Evaluate the predicted point cloud with respect to the ground truth point clouds with the metric proposed in section \ref{Evaluation}
+  \item Interpolate the predicted point cloud with the nearest LIDAR point cloud object of interest segmentation to obtain the final output
+\end{enumerate}
+
+Our aim is to initially replicate existing models, before fine-tuning our own. We identified two models that process images to generate point clouds (RealPoint3D and PointOutNet) and two models that take point cloud inputs to perform segmentation (PointNet and PointNet++):  
+
+% https://medium.com/analytics-vidhya/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5
+
+\textbf{RealPoint3D} (\cite{xia2018realpoint3d}) is a promising model that integrates prior 3D shape knowledge into the network to guide 3D generation. Given a query image, a shape is retrieved from a 3D model database. The image together with the retrieved shape is fed into RealPoint3D to generate a 3D point cloud.   
+
+\textbf{PointNet} (\cite{qi2016pointnet}) provides a unified architecture for applications ranging from object classification (identifying a specific object), part segmentation (identifying the parts that make up a single object), to scene semantic parsing (identifying pre-determined families of objects e.g. chairs). PointNet consumes point clouds as inputs so could be used to process LIDAR data.
+
+\textbf{PointNet++} (\cite{qi2017pointnet}) 
+builds on PointNet by applying it recursively and capturing local differences e.g. density variability than can come from perspective effects. The idea is to partition the set of points into overlapping local regions by the distance metric of the underlying space. In a fashion similar to CNNs, local features are extracted from small neighborhoods. However, contrary to CNNs, where smaller kernels improve the ability of the network to extract features, in PointNet++ small neighbourhoods may consist of too few points which might be insufficient to allow PointNets to capture patterns robustly, the solution found by the authors is to define neighborhoods at multiple scales.
+
+\textbf{PointOutNet} (\cite{fan2016point}) is a conditional shape sampler, capable of predicting multiple plausible 3D point clouds from an input image, and also capable of 3D shape completion. The pipeline infers viewpoint position, which is something we wish to implicitly add to our input. However, as the source code is freely available and the work is influential in generating point clouds from single images, we find it is worth investigating.

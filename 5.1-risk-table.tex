@@ -1,0 +1,76 @@
+% risk table cell coloring
+% Manchev is the only one to apply background colouring to cells with impact above a certain score
+
+% Colours
+% red {FF0000}
+% amber {FFBF00}
+% green {00FF00}
+
+% \cellcolor[HTML]{C0C0C0}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ |m{55mm}|m{3mm}|m{3mm}|m{5mm}|m{73mm}| } 
+\hline
+\textbf{Description} & \textbf{L} & \textbf{C} & \textbf{I} & \textbf{Mitigation} \\ \hline
+
+% Insufficient knowledge
+Insufficient domain knowledge
+% Scores
+& 2 & 4 & \cellcolor[HTML]{FFBF00} 8 &
+% Mitigation
+Extend scope for literature survey and toolset selection and decrease scope for alternative models \\ \hline
+
+%% Cannot replicate all models
+Cannot replicate all models in chosen environment 
+& 1 & 5 & \cellcolor[HTML]{00FF00} 5 &
+% Mitigation
+Redefine project scope \\ \hline
+
+% No additional networks
+Unable to create synthetic data
+% Scores
+& 2 & 3 & \cellcolor[HTML]{FFBF00} 6 &
+% Mitigation
+Use existing 3D shape libraries only\\ \hline
+
+% Sequence learning
+Output point clouds too course
+% Scores
+& 2 & 4 & \cellcolor[HTML]{FFBF00} 8 &
+% Mitigation
+Use shape-to-point-cloud lookup database\\ \hline
+
+% No additional networks
+Unable to create alternative models
+% Scores
+& 2 & 4 & \cellcolor[HTML]{FFBF00} 8 &
+% Mitigation
+Use existing models only \\ \hline
+
+% Loss of data
+Accidental loss of data.
+% Scores
+& 2 & 5 & \cellcolor[HTML]{FF0000} 10 &
+% Mitigation
+Keep all source code, reporting and data online (github.com, overleaf.com, aws.amazon.com, camber.city.ac.uk and devcloud.intel.com) \\ \hline
+%Keep source code repository on github.com, project report on overleaf.com 
+%and data on aws.amazon.com
+
+%% COVID
+% Description
+Continued COVID-19 lockdown disruption
+& 2 & 3 & \cellcolor[HTML]{FFBF00} 6 &
+% Mitigation
+Scale down project \\ \hline
+
+% Report writing overruns
+Final report delay 
+% Scores
+& 2 & 5 & \cellcolor[HTML]{FF0000} 10 & 
+% Mitigation
+One additional week has been added for contingency \\ \hline
+\end{tabular}
+\end{center}
+\caption{Risk register}
+\label{table:risk_table}
+\end{table}

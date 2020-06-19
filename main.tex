@@ -1,0 +1,142 @@
+%------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%------------------
+
+% Original template  https://www.overleaf.com/latex/templates/template-for-foundation-master-project-reports/dtzztzckwswh
+
+% 12 point
+\documentclass[a4paper,12pt]{article} % preamble - found size is defined within this tag
+% Times New Roman
+\usepackage{tgtermes}
+% single line space - latex default
+% \linespread{1}
+
+% Adjusting margins to personal my need
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1in}
+
+% Graphics
+\usepackage{tikz, graphicx}
+\graphicspath{{figures/}}
+
+% Colours
+\usepackage{color, colortbl}
+
+% Figure wrapping
+\usepackage{wrapfig}
+
+% Math
+\usepackage{amssymb}
+\usepackage{amsmath} % Required for some math elements 
+
+% References - Harvard style
+\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+\addbibresource{bibliography/rpmi.bib}
+
+% Other
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{lipsum}
+\usepackage{hyperref}
+
+% let's try this, so references start on separate page
+\flushbottom
+
+% For ethics pdf form insertion
+% Will stitch online, better result
+% https://pdfjoiner.com/
+% \usepackage[final]{pdfpages}
+
+%------------------
+%	MAIN PART
+%------------------
+\begin{document}
+
+\title{%
+  Training a CNN end-to-end to generate point clouds from single images\\
+  \medskip
+  \large Individual Project Proposal\\
+    Daniel Sikar - MSc Data Science PT2\\
+    Supervisor: Artur Garcez 
+    }
+% \author{Daniel Sikar - MSc Data Science PT2}
+% \date{\vspace{-5ex}} % get rid of date spacing
+\date{\today} % Date for the report
+
+\maketitle % Inserts the title, author and date
+
+% logo, absolute positioning
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
+\node[anchor=north west,xshift=1cm,yshift=-0.5cm]{\includegraphics[width=4cm]{city-logo.jpg}};
+\end{tikzpicture}
+
+%------------------
+%	PRIOR ART
+%------------------
+
+% We looked at all proposals made available and shortlisted 6; Atkins,
+% Dimmock, Manchev, Minah, Walters and Wells, and used these as 
+% references to style our own report
+
+%------------------
+%	INTRODUCTION
+%------------------
+
+\input{1-introduction.tex}
+
+%------------------
+%	CRITICAL CONTEXT 
+%------------------
+
+\input{2-critical-context.tex}
+
+%------------------
+%	METHODS AND APPROACHES 
+%------------------
+
+\input{3-methods-approaches.tex}
+
+%------------------
+%	WORK PLAN 
+%------------------
+
+\input{4-work-plan.tex}
+
+%------------------
+%	RISKS
+%------------------
+
+\input{5-risks.tex}
+
+%------------------
+%	RESEARCH ETHICS & PROFESSIONAL ISSUES
+%------------------
+
+\input{6-research-ethics-professional-issues.tex}
+
+%------------------
+%	REFERENCES
+%------------------
+
+% References in separate page
+%% we use \clearpage to achieve the effect of \pagebreak
+%% https://tex.stackexchange.com/questions/234057/pagebreak-newpage-vspace-all-not-working-after-a-table
+\clearpage
+\printbibliography
+
+
+%------------------
+%	RESEARCH ETHICS REVIEW FORM
+%------------------
+
+% Better results obtained using https://pdfjoiner.com/
+% join completed-ethics-form.pdf
+% \GitHub\msc-data-science\INM363-IndividualProjects\coursework
+
+% \includepdf[pages=-,pagecommand={},width=\linewidth]{ethics-form.pdf}
+
+\end{document}
